@@ -1,10 +1,17 @@
 import React from 'react';
 import './WidgetProgress.css';
 
-function WidgetProgress() {
+interface WidgetProgressProps {
+  className?: string;
+  percent: number;
+}
+
+function WidgetProgress({ className, percent }: WidgetProgressProps) {
   return (
-    <div className='WidgetProgress'>
-      <></>
+    <div className={`widgetProgress-root ${className}`}>
+      <div className='widgetProgress-mainline' style={{ width: `${percent}%` }}>
+        {percent}%
+      </div>
     </div>
   );
 }
