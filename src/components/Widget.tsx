@@ -8,8 +8,6 @@ import { widgetData } from '../store/progress/progress';
 function Widget() {
   const data = useAppSelector(widgetData);
 
-  console.log('widget Data: ', data);
-
   return (
     <div className='widget-root'>
       <div className='widget-container'>

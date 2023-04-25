@@ -1,21 +1,29 @@
-import { useAppDispatch } from '../../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
+import { panelTitle } from '../../../../store/panel/panel';
 import { checked, unChecked } from '../../../../store/progress/progress';
 import './WidgetGroupContent.css';
 
 interface WidgetGroupContentProps {
-  data: TaskItem[];
+  data: GroupItem;
+  onChecked: (status: boolean) => void;
 }
 
-function WidgetGroupContent({ data }: WidgetGroupContentProps) {
+function WidgetGroupContent({ data, onChecked }: WidgetGroupContentProps) {
   const dispatch = useAppDispatch();
+  const selectedPanelTitle = useAppSelector(panelTitle);
 
   const handleTaskChange = (e: any, val: number) => {
     e.target.checked ? dispatch(checked(val)) : dispatch(unChecked(val));
+    e.target.checked ? onChecked(true) : onChecked(false);
   };
 
   return (
-    <div className='widgetGroupContent'>
-      {data?.map((task: TaskItem, index: number) => {
+    <div
+      className={`widgetGroupContent ${
+        selectedPanelTitle !== data.name ? 'hidden' : ''
+      }`}
+    >
+      {data.tasks?.map((task: TaskItem, index: number) => {
         return (
           <label className='task' key={index}>
             <input

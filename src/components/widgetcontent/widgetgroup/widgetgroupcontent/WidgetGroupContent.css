@@ -1,6 +1,14 @@
 .widgetGroupContent {
   padding: 10px 25px;
   text-align: left;
+  max-height: 1000px;
+  transition: max-height 0.2s ease-in-out;
+}
+
+.widgetGroupContent.hidden {
+  max-height: 0;
+  overflow: hidden;
+  border: transparent;
 }
 
 .widgetGroupContent .task {

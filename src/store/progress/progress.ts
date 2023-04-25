@@ -8,7 +8,6 @@ const BASE_URL =
 
 export const fetchData = createAsyncThunk('progress', async () => {
   const response = await axios.get(BASE_URL);
-  console.log('response data : ', response.data);
   const data = response?.data;
   let total = 0;
   let progress = 0;

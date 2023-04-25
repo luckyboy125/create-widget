@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import WidgetGroupContent from './widgetgroupcontent/WidgetGroupContent';
 import WidgetGroupHeader from './widgetgroupheader/WidgetGroupHeader';
 import './WidgetGroup.css';
@@ -8,19 +8,32 @@ interface WidgetGroupProps {
 }
 
 function WidgetGroup({ groupData }: WidgetGroupProps) {
-  const [showContent, setShowContent] = useState(false);
+  const [checkedTasksCount, setCheckedTasksCount] = useState<number>(0);
 
-  const showClick = (status: boolean) => {
-    setShowContent(status);
+  const handleChecked = (status: boolean) => {
+    let currentCheckedTasks = checkedTasksCount;
+    status ? currentCheckedTasks++ : currentCheckedTasks--;
+    setCheckedTasksCount(currentCheckedTasks);
   };
+
+  useEffect(() => {
+    let count = 0;
+    groupData.tasks.map((task: TaskItem) => {
+      task.checked ? count++ : (count += 0);
+    });
+    setCheckedTasksCount(count);
+  }, [groupData.name]);
 
   return (
     <div className='widgetGroup'>
       <WidgetGroupHeader
         title={groupData.name}
-        onShow={(status) => showClick(status)}
+        allChecked={groupData.tasks.length === checkedTasksCount}
       />
-      {showContent ? <WidgetGroupContent data={groupData.tasks} /> : <></>}
+      <WidgetGroupContent
+        data={groupData}
+        onChecked={(check) => handleChecked(check)}
+      />
     </div>
   );
 }

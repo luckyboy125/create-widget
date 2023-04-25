@@ -15,6 +15,12 @@
   align-items: center;
 }
 
+.widgetGroupHeader .groupName.allChecked i{
+  color: #00b797;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
 .widgetGroupHeader .groupName i {
   color: #000;
   margin-right: 10px;

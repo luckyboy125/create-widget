@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import progressReducer from './progress/progress';
+import panelReducer from './panel/panel';
 
 export const store = configureStore({
   reducer: {
     progress: progressReducer,
+    panel: panelReducer,
   },
 });
 
