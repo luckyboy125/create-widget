@@ -1,0 +1,37 @@
+.widgetGroupHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.widgetGroupHeader .groupName {
+  display: flex;
+  font-size: 16px;
+  font-family: Lato;
+  color: #000;
+  align-items: center;
+}
+
+.widgetGroupHeader .groupName i {
+  color: #000;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.widgetGroupHeader .visibility {
+  display: flex;
+  font-size: 16px;
+  font-family: Lato;
+  color: #000;
+  align-items: center;
+  opacity: 0.6;
+}
+
+.widgetGroupHeader .visibility i {
+  color: #000;
+  margin-left: 10px;
+  margin-top: 5px;
+}

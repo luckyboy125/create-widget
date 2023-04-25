@@ -1,0 +1,63 @@
+.widgetGroupContent {
+  padding: 10px 25px;
+  text-align: left;
+}
+
+.widgetGroupContent .task {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: Lato;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.widgetGroupContent .task input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  display: none;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: transparent;
+  border: 1px solid #000 !important;
+  border-radius: 5px;
+}
+
+.widgetGroupContent .task input:checked ~ .checkmark {
+  background-color: #00b797;
+  border-radius: 5px;
+  border: 1px solid transparent !important;
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.widgetGroupContent .task input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.widgetGroupContent .task .checkmark:after {
+  left: 4px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0px 2px 2px 0;
+  transform: rotate(45deg);
+}
