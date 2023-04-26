@@ -8,31 +8,31 @@ interface WidgetGroupProps {
 }
 
 function WidgetGroup({ groupData }: WidgetGroupProps) {
-  const [checkedTasksCount, setCheckedTasksCount] = useState<number>(0);
+  const [checkedCount, setCheckedCount] = useState<number>(0);
 
-  const handleChecked = (status: boolean) => {
-    let currentCheckedTasks = checkedTasksCount;
-    status ? currentCheckedTasks++ : currentCheckedTasks--;
-    setCheckedTasksCount(currentCheckedTasks);
+  const handleChecked = (isChecked: boolean) => {
+    setCheckedCount((checkedCount) =>
+      isChecked ? checkedCount + 1 : checkedCount - 1
+    );
   };
 
   useEffect(() => {
-    let count = 0;
-    groupData.tasks.map((task: TaskItem) => {
-      task.checked ? count++ : (count += 0);
-    });
-    setCheckedTasksCount(count);
+    setCheckedCount(
+      groupData.tasks.reduce((count, task) => {
+        return task.checked ? count + 1 : count;
+      }, 0)
+    );
   }, [groupData.name]);
 
   return (
     <div className='widgetGroup'>
       <WidgetGroupHeader
         title={groupData.name}
-        allChecked={groupData.tasks.length === checkedTasksCount}
+        allChecked={groupData.tasks.length === checkedCount}
       />
       <WidgetGroupContent
         data={groupData}
-        onChecked={(check) => handleChecked(check)}
+        onChecked={(isChecked) => handleChecked(isChecked)}
       />
     </div>
   );

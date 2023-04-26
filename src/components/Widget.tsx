@@ -9,14 +9,12 @@ function Widget() {
   const data = useAppSelector(widgetData);
 
   return (
-    <div className='widget-root'>
-      <div className='widget-container'>
-        <div className='widget-header'>
-          <div className='widget-title'>Lodgify Grouped Tasks</div>
-          <WidgetProgress />
-        </div>
-        <WidgetContent data={data} />
+    <div className='widget'>
+      <div className='widget-header'>
+        <div className='widget-title'>Lodgify Grouped Tasks</div>
+        <WidgetProgress />
       </div>
+      <WidgetContent data={data} />
     </div>
   );
 }

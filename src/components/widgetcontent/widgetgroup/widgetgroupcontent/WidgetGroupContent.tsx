@@ -5,7 +5,7 @@ import './WidgetGroupContent.css';
 
 interface WidgetGroupContentProps {
   data: GroupItem;
-  onChecked: (status: boolean) => void;
+  onChecked: (isChecked: boolean) => void;
 }
 
 function WidgetGroupContent({ data, onChecked }: WidgetGroupContentProps) {
@@ -13,8 +13,8 @@ function WidgetGroupContent({ data, onChecked }: WidgetGroupContentProps) {
   const selectedPanelTitle = useAppSelector(panelTitle);
 
   const handleTaskChange = (e: any, val: number) => {
+    onChecked(e.target.checked);
     e.target.checked ? dispatch(checked(val)) : dispatch(unChecked(val));
-    e.target.checked ? onChecked(true) : onChecked(false);
   };
 
   return (
@@ -31,7 +31,7 @@ function WidgetGroupContent({ data, onChecked }: WidgetGroupContentProps) {
               defaultChecked={task.checked}
               onChange={(e) => handleTaskChange(e, task.value)}
             />
-            <span className='checkmark'></span>
+            <span className='checkmark' />
             {task.description}
           </label>
         );

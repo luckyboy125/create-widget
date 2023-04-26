@@ -7,17 +7,17 @@ const BASE_URL =
   'https://gist.githubusercontent.com/huvber/ba0d534f68e34f1be86d7fe7eff92c96/raw/98a91477905ea518222a6d88dd8b475328a632d3/mock-progress';
 
 export const fetchData = createAsyncThunk('progress', async () => {
-  const response = await axios.get(BASE_URL);
-  const data = response?.data;
-  let total = 0;
-  let progress = 0;
+  const { data } = await axios.get(BASE_URL);
+  const response = { total: 0, progress: 0, data };
+
   data.map((group: GroupItem) => {
     group.tasks.map((task: TaskItem) => {
-      total += task.value;
-      task.checked && (progress += task.value);
+      response.total += task.value;
+      if (task.checked) response.progress += task.value;
     });
   });
-  return { total, progress, data };
+
+  return response;
 });
 
 interface ProgressState {
@@ -45,7 +45,7 @@ export const progressReducer = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchData.pending, (state, action) => {
+      .addCase(fetchData.pending, (state) => {
         state.value = 0;
         state.total = 0;
         state.data = [];
@@ -55,7 +55,7 @@ export const progressReducer = createSlice({
         state.total = action.payload.total;
         state.data = action.payload.data;
       })
-      .addCase(fetchData.rejected, (state, action) => {
+      .addCase(fetchData.rejected, (state) => {
         state.value = 0;
         state.total = 0;
         state.data = [];

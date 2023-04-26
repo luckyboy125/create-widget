@@ -2,42 +2,42 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
-  padding: 0 20px;
+  height: 68px;
+  padding: 0 25px 0 25.6px;
   cursor: pointer;
 }
 
 .widgetGroupHeader .groupName {
   display: flex;
-  font-size: 16px;
-  font-family: Lato;
-  color: #000;
   align-items: center;
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #333333;
 }
 
-.widgetGroupHeader .groupName.allChecked i{
+.widgetGroupHeader .groupName img {
+  margin-right: 16.8px;
+}
+
+.widgetGroupHeader .groupName.allChecked {
   color: #00b797;
-  margin-right: 10px;
-  margin-top: 5px;
-}
-
-.widgetGroupHeader .groupName i {
-  color: #000;
-  margin-right: 10px;
-  margin-top: 5px;
 }
 
 .widgetGroupHeader .visibility {
   display: flex;
-  font-size: 16px;
-  font-family: Lato;
-  color: #000;
   align-items: center;
-  opacity: 0.6;
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #999999;
 }
 
 .widgetGroupHeader .visibility i {
-  color: #000;
-  margin-left: 10px;
-  margin-top: 5px;
+  color: #999999;
+  margin-left: 9px;
 }

@@ -1,9 +1,9 @@
 .widgetContent {
-  border-radius: 20px;
-  border: solid 1px #d4dbda;
   width: 100%;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
 }
 
-.widgetContent :last-child {
+.widgetContent :last-child.widgetGroup {
   border: solid 1px transparent;
 }

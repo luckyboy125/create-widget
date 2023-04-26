@@ -1,5 +1,7 @@
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { panelTitle, setPanelTitle } from '../../../../store/panel/panel';
+import groupIcon from '../../../../assets/icons/group_icon.svg';
+import groupIconChecked from '../../../../assets/icons/group_icon_checked.svg';
 import './WidgetGroupHeader.css';
 
 interface WidgetGroupHeaderProps {
@@ -11,25 +13,25 @@ function WidgetGroupHeader({ title, allChecked }: WidgetGroupHeaderProps) {
   const dispatch = useAppDispatch();
   const selectedPanelTitle = useAppSelector(panelTitle);
 
-  const showClick = (str: string) => {
-    selectedPanelTitle === str
+  const handleShow = (title: string) => {
+    selectedPanelTitle === title
       ? dispatch(setPanelTitle(''))
-      : dispatch(setPanelTitle(str));
+      : dispatch(setPanelTitle(title));
   };
 
   return (
-    <div className='widgetGroupHeader' onClick={() => showClick(title)}>
+    <div className='widgetGroupHeader' onClick={() => handleShow(title)}>
       <div className={`groupName ${allChecked ? 'allChecked' : ''}`}>
-        <i className={`fal fa-clipboard-list${allChecked ? '-check' : ''}`}></i>
+        <img src={allChecked ? groupIconChecked : groupIcon} alt='group-icon' />
         {title}
       </div>
       <div className='visibility'>
         {title === selectedPanelTitle ? 'Hide' : 'Show'}
         <i
-          className={`far fa-angle-${
+          className={`fal fa-chevron-${
             title === selectedPanelTitle ? 'up' : 'down'
           }`}
-        ></i>
+        />
       </div>
     </div>
   );

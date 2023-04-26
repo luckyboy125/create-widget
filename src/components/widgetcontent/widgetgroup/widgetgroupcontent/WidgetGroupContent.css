@@ -1,27 +1,28 @@
 .widgetGroupContent {
-  padding: 10px 25px;
+  padding: 12px 16px;
   text-align: left;
-  max-height: 1000px;
-  transition: max-height 0.2s ease-in-out;
 }
 
 .widgetGroupContent.hidden {
-  max-height: 0;
-  overflow: hidden;
-  border: transparent;
+  display: none;
 }
 
 .widgetGroupContent .task {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  cursor: pointer;
-  font-size: 16px;
-  font-family: Lato;
-  user-select: none;
   display: flex;
   align-items: center;
-  margin: 15px 0;
+  position: relative;
+  padding-left: 48px;
+  cursor: pointer;
+  user-select: none;
+  align-items: center;
+  margin: 4px 0;
+  height: 52px;
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
 }
 
 .widgetGroupContent .task input {
@@ -35,8 +36,9 @@
 
 .checkmark {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 16px;
   height: 16px;
   width: 16px;
   background-color: transparent;
