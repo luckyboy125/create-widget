@@ -1,4 +1,3 @@
-# Welcome Lodgify!
 # How to start
 
 1. Run `npm install`
